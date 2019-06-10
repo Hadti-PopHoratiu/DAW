@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div style="margin-top: 2%">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 offset-md-1 row">
+        <table>
+          <tr>
+            <th>Title</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th><button (click)="toggle()" type="button" class="btn  btn-success btn-sm" id="add">Add</button></th>
+          </tr>
+
+          <tr *ngFor="let article of articles">
+            <td>{{article.title}}</td>
+            <td><button routerLink="/admin/{{article.id}}" type="button" class="btn  btn-info" id="edit">Edit</button>
+            </td>
+            <td><button (click)="this.deleteArticle(article.id)" type="button" class="btn  btn-danger"
+                id="delete">Delete</button></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="col-md-3 offset-md-1">
+        <ng-container *ngIf="show">
+          <app-add-form></app-add-form>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

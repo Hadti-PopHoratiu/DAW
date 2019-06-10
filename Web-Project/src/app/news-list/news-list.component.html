@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div style="margin-top: 2%">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 offset-md-2 row">
+        <div class="col-md-12 row">
+
+          <div *ngFor="let article of articles">
+            <h5>{{article?.title}}</h5>
+            <p class="under_article">{{article?.author}}</p>
+            <p class="under_article">{{article?.insert_date}}</p>
+            <p class="under_article">{{category[article?.category_id-1].name}}</p>
+            <img src="{{article?.image}}" alt="image" class="responsive_image">
+            <p>{{article?.description}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2 offset-md-2 row">
+        <div class="col-md-12" align-content-center>
+          <div class="button-margin">
+            <a (click)="getButtonName('All'); firstClick()" class="btn btn-lg" id="web">All</a>
+          </div>
+          <div class="button-margin" *ngFor="let button of this.category">
+            <a (click)="getButtonName(button.name); firstClick()" class="btn btn-lg" id="web">{{ button.name }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
